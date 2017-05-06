@@ -1,5 +1,5 @@
 """
-WSGI config for hire99 project.
+WSGI config for the hire99 project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
