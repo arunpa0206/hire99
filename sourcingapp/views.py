@@ -3,6 +3,10 @@ from django.contrib.auth import login, authenticate
 #from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from sourcingapp.forms import SignUpForm
+# Line chart js
+from random import shuffle, randint
+from django.views.generic import TemplateView
+
 
 # Create your views here.
 # this login required decorator is to not allow to any

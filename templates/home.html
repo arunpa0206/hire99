@@ -1,13 +1,113 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% load staticfiles %}
 
-<div class="container">
-    <div class="row">
-        <div class="jumbotron">
-            <h1>Hello</h1>
-            <p>You are on your Dashboard</p>
-        </div>
-    </div>
-</div>
+{% block content %}
+<!-- Start: test line chart -->
+
+  <div style="width:650px; height:500px;">
+    <canvas id="filterBarChart" width="2" height="1"></canvas>
+  </div>
+  <div style="position:absolute; top:75px; left:650px;">
+    {% include "dashing/dashboard.html" %}
+  </div>
+  <div style="position:absolute; top:450px; left:500px; width:650px; height:500px;">
+     <canvas id="pipeLinePieChart" width="2" height="1"></canvas>
+  </div>
+  <div style="position:absolute; top:450px; left:10px; width:650px; height:550px;">
+     <canvas id="geographyDonutChart" width="2" height="1"></canvas>
+  </div>
+
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+
+    <script type="text/javascript">
+
+          var filterCtx = $("#filterBarChart").get(0).getContext("2d");
+          var pipeLineCtx = $("#pipeLinePieChart").get(0).getContext("2d");
+          var doughnutCtx = $("#geographyDonutChart").get(0).getContext("2d");
+
+
+          var filterBarChart = new Chart(filterCtx, {
+              type: 'bar',
+              data: {
+                labels: ['Resume Reviewed', 'BOT Screened', 'Interview Scheduled', 'Offer Pending', 'Offered', 'Position Filled'],
+                datasets: [{
+                  label: 'Technical Architect',
+                  data: [24, 31, 3, 7, 16, 3],
+                  backgroundColor: "rgba(54, 162, 235, 1)"
+                }, {
+                  label: 'SDM',
+                  data: [12, 29, 15, 5, 2, 3],
+                  backgroundColor: "rgba(255, 99, 132, 1)"
+                }, {
+                  label: 'SDE-1',
+                  data: [4, 12, 3, 2, 0, 1],
+                  backgroundColor: "rgba(255, 206, 86, 1)"
+                }, {
+                  label: 'SDE-2',
+                  data: [5, 10, 15, 1, 0, 3],
+                  backgroundColor: "rgba(75, 192, 192, 1)"
+              }]
+            },
+              options: {
+                title: {
+                  display: true,
+                  text: 'Filter Report by Job Function'
+                }
+              }
+          });
+
+          var pipeLinePieChart = new Chart(pipeLineCtx, {
+            type: 'pie',
+            data: {
+              labels: ['SDM', 'Technical Architect', 'SDE-1', 'SDE-2', 'SDE-3'],
+              datasets: [{
+                backgroundColor: [
+                  "#2ecc71",
+                  "#3498db",
+                  "#95a5a6",
+                  "#9b59b6",
+                  "#34495e"
+                ],
+                data: [150, 200, 350, 500, 100]
+              }]
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'PipeLine Composition'
+              }
+            }
+
+          });
+
+          var geographyDonutChart = new Chart(doughnutCtx, {
+            type: 'doughnut',
+            data: {
+              labels: ['Bangalore', 'Gurgoan', 'Pune', 'Chennai', 'Outside India'],
+              datasets: [{
+                backgroundColor: [
+                  "#2ecc71",
+                  "#3498db",
+                  "#95a5a6",
+                  "#9b59b6",
+                  "#34495e"
+                ],
+                data: [2500, 500, 350, 1200, 100]
+              }]
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'Geographic Composition'
+              }
+            }
+
+          });
+    </script>
 {% endblock %}
+
+<!-- Added for dashing dashboard -->

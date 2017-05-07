@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sourcingapp',
     'dashing',
+    'chartjs',
 
 ]
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

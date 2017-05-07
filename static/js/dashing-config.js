@@ -6,15 +6,15 @@ var dashboard = new Dashboard();
 dashboard.addWidget('candidate_inflow_widget', 'Number', {
     getData: function () {
         $.extend(this.scope, {
-            title: 'Candidate Pipeline Inflow',
-            moreInfo: 'by me',
-            updatedAt: 'Last updated at 14:10',
-            detail: '(50% Below Average)',
-            value: '100'
+            title: '3 Crore profiles from 300 locations to explore',
+            //moreInfo: 'by me',
+            //updatedAt: 'Last updated at 14:10',
+            detail: 'Connect Now >>',
+            //value: '100'
         });
     }
 });
-dashboard.addWidget('Position_Closed_widget', 'Number', {
+/*dashboard.addWidget('Position_Closed_widget', 'Number', {
     getData: function () {
         $.extend(this.scope, {
             title: 'Positions Closed',
@@ -96,4 +96,4 @@ dashboard.addWidget('completion_widget', 'Knob', {
                 ]
             });
     }
-});
+});*/
