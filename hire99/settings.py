@@ -130,4 +130,4 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/' # It means home view
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
