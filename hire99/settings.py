@@ -131,3 +131,6 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/' # It means home view
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+
+AWS_ACCESS_KEY_ID = "AKIAIUT25HXJ5JBLZZ2Q"
+AWS_SECRET_ACCESS_KEY = "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"

@@ -43,8 +43,18 @@
                         </p>
                         <p class="bs-component">
                             <center>
-                                <input class="btn btn-success btn-sm" type="submit" value="login" />
+                                <input class="btn btn-success btn-sm" type="submit" value="Login" />
                             </center>
+                        </p>
+                        <p>
+                          <center>
+                            Not registered? <a href="{% url 'signup' %}">Create an account</a>
+                          </center>
+                        </p>
+                        <p>
+                          <center>
+                            <a href="{% url 'password_reset' %}">Forgot password?</a>
+                          </center>
                         </p>
                         <input type="hidden" name="next" value="{{ next }}" />
                     </form>
