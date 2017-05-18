@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script type="text/javascript">
+function showScheduled() {
+  alert("Scheduled");
+}
+function showAdded() {
+  alert("Added");
+}
+</script>
+<h1>Search Candidates</h1>
+<form action="" method="get">
+  {{ filter.form.as_p}}
+  <input type="submit" value="Search"/>
+</form>
+<br/>
+  <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th style="background-color:lightblue">FirstName</th>
+      <th style="background-color:lightblue">LastName</th>
+      <th style="background-color:lightblue">Gender</th>
+      <th style="background-color:lightblue">City</th>
+      <th style="background-color:lightblue">PassoutYear</th>
+      <th style="background-color:lightblue">HighestQualification</th>
+      <th style="background-color:lightblue">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for candidate in filter.qs %}
+      <tr>
+        <td>{{candidate.user_fname}}</td>
+        <td>{{candidate.user_lname}}</td>
+        <td>{{candidate.user_sex}}</td>
+        <td>{{candidate.user_city_name}}</td>
+        <td>{{candidate.hq_passout_year}}</td>
+        <td>{{candidate.course_name}}</td>
+        <td>
+          <input type="button" value="Schedule auto screen" onclick="showScheduled()"/>
+          <br/>
+          <input type="button" value="Add to pipeline" onclick="showAdded()"/>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

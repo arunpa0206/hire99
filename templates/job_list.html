@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Search Jobs</h1>
+<form action="" method="get">
+  {{ filter.form.as_p }}
+  <input type="submit" value="Search"/>
+</form>
+<br/>
+  <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Location</th>
+      <th>Title</th>
+      <th>JStatus</th>
+      <th>SkillSet</th>
+      <th>CreationDate</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for job in filter.qs %}
+      <tr>
+        <td>{{job.company_name}}</td>
+        <td>{{job.job_location}}</td>
+        <td><a href="/jobdetail">{{job.job_title}}</a></td>
+        <td>{{job.job_status}}</td>
+        <td>{{job.skill_set}}</td>
+        <td>{{job.creation_date}}</td>
+        <td><a href="/candidateform">Add candidate</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

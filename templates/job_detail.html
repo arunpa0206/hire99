@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Job Details</h1>
+<br/>
+<table class="table table-bordered">
+  <tbody>
+      {% for job in filter.qs %}
+      <tr>
+        <td><b>Company</b></td>
+        <td>{{job.company_name}}</td>
+      </tr>
+      <tr>
+        <td><b>Location</b></td>
+        <td>{{job.job_location}}</td>
+      </tr>
+      <tr>
+        <td><b>Title</b></td>
+        <td>{{job.job_title}}</td>
+      </tr>
+      <tr>
+        <td><b>Description</b></td>
+        <td>{{job.job_description}}</td>
+      </tr>
+      <tr>
+        <td><b>Status</b></td>
+        <td>{{job.job_status}}</td>
+      </tr>
+      <tr>
+        <td><b>Skill Set</b></td>
+        <td>{{job.skill_set}}</td>
+      </tr>
+      <tr>
+        <td><b>Creation Date</b></td>
+        <td>{{job.creation_date}}</td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

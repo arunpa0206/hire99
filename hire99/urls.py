@@ -19,6 +19,7 @@ from django.contrib.auth import views as auth_views
 
 from sourcingapp.forms import LoginForm
 from sourcingapp import views as sourcingapp_views
+from searchapp import views as searchapp_views
 from dashing.utils import router
 
 urlpatterns = [
@@ -39,4 +40,17 @@ urlpatterns = [
     url(r'^account_activation_sent/$', sourcingapp_views.account_activation_sent, name='account_activation_sent'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
             sourcingapp_views.activate, name='activate'),
+
+    # Job search page
+    url(r'^jobsearch/$', searchapp_views.jobsearch, name='jobsearch'),
+    #url(r'^jobsearch/$', searchapp_views.JobSearchView.as_view(), name='jobsearch'),
+
+    # Detail page
+    url(r'^jobdetail/$', searchapp_views.jobdetail, name='jobdetail'),
+
+    # Candidate search page
+    url(r'^candidatesearch/$', searchapp_views.candidatesearch, name='candidatesearch'),
+
+    # Candidate forms
+    url(r'^candidateform/$', searchapp_views.candidateform, name='candidateform'),
 ]
