@@ -4,18 +4,17 @@
 
 {% block content %}
 <!-- Start: test line chart -->
-
-  <div style="width:650px; height:500px;">
-    <canvas id="filterBarChart" width="2" height="1"></canvas>
+  <div style="width:50px; height:300px;">
+    <canvas id="filterBarChart" width="3" height="1"></canvas>
   </div>
-  <div style="position:absolute; top:75px; left:650px;">
+<!--  <div style="position:absolute; top:75px; left:650px;">
     {% include "dashing/dashboard.html" %}
+  </div> -->
+  <div style="position:absolute; top:750px; left:500px; width:650px; height:500px;">
+     <canvas id="pipeLinePieChart" width="3" height="1"></canvas>
   </div>
-  <div style="position:absolute; top:450px; left:500px; width:650px; height:500px;">
-     <canvas id="pipeLinePieChart" width="2" height="1"></canvas>
-  </div>
-  <div style="position:absolute; top:450px; left:10px; width:650px; height:550px;">
-     <canvas id="geographyDonutChart" width="2" height="1"></canvas>
+  <div style="position:absolute; top:750px; left:10px; width:650px; height:550px;">
+     <canvas id="geographyDonutChart" width="3" height="1"></canvas>
   </div>
 
 

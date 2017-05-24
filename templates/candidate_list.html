@@ -1,17 +1,13 @@
-{% extends "base.html" %}
+{% extends "base_sidebar.html" %}
 
 {% block content %}
-<script type="text/javascript">
-function showScheduled() {
-  alert("Scheduled");
-}
-function showAdded() {
-  alert("Added");
-}
-</script>
-<h1>Search Candidates</h1>
+
+<table>
+<td><h2>Search Candidates | </h2></td>
+<td><a href="/candidateform"><h3>Add Private Candidates</h3></a></td>
+</table>
 <form action="" method="get">
-  {{ filter.form.as_p}}
+  {{filter.form.as_p}}
   <input type="submit" value="Search"/>
 </form>
 <br/>
@@ -28,7 +24,7 @@ function showAdded() {
     </tr>
   </thead>
   <tbody>
-      {% for candidate in filter.qs %}
+      {% for candidate in candidates %}
       <tr>
         <td>{{candidate.user_fname}}</td>
         <td>{{candidate.user_lname}}</td>
@@ -37,12 +33,35 @@ function showAdded() {
         <td>{{candidate.hq_passout_year}}</td>
         <td>{{candidate.course_name}}</td>
         <td>
-          <input type="button" value="Schedule auto screen" onclick="showScheduled()"/>
+          <input type="button" value="Schedule auto screen" onclick="this.disabled=true;this.value='Scheduled';"/>
           <br/>
-          <input type="button" value="Add to pipeline" onclick="showAdded()"/>
+          <input type="button" value="Add to pipeline" onclick="this.disabled=true;this.value='Added';"/>
         </td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
+
+  {% if candidates.has_other_pages %}
+  <ul class="pagination">
+    {% if candidates.has_previous %}
+      <li><a href="?page={{ candidates.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in candidates.paginator.page_range %}
+      {% if candidates.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="{% url 'candidatesearch'%}?page={{ i }}&{{parameters}}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if candidates.has_next %}
+      <li><a href="?page={{ candidates.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
 {% endblock %}

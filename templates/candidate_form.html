@@ -1,19 +1,13 @@
-{% extends "base.html" %}
+{% extends "base_sidebar.html" %}
 
 {% block content %}
-<h1>Candidate Input Form</h1>
+<h1>Add Private Candidate</h1>
 <br/>
 
-  <table>
-    <tr>
-      <td>Candidate Name</td>
-    </tr>
-    <tr>
-      <td>Skill Set</td>
-    </tr>
-  </table>
-
-  
-
+<form action="{% url 'candidatesearch' %}" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Save" />
+</form>
 
 {% endblock %}

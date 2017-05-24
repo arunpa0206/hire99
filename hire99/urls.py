@@ -52,5 +52,7 @@ urlpatterns = [
     url(r'^candidatesearch/$', searchapp_views.candidatesearch, name='candidatesearch'),
 
     # Candidate forms
-    url(r'^candidateform/$', searchapp_views.candidateform, name='candidateform'),
+    url(r'^candidateform/$', searchapp_views.CandidateCreate.as_view()),
+
+     url(r'^base/$', sourcingapp_views.base, name='base'),
 ]
